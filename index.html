@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Forms</title>
+</head>
+<body>
+    <div class="main">
+        <h1>Naudotojo anketa</h1>
+        <!---lytis-->
+        <div class="gender">
+            <label for="lytis">Lytis: </label>
+            <select id="lytis">
+                <option value="" disabled selected>Pasirinkti</option>
+                <option value="male">Vyras</option>
+                <option value="female">Moteris</option>
+            </select>
+        </div>
+        <!--vardas-->
+        <div class="name">
+            <label for="name">Vardas</label>
+            <input type="text">
+        </div>
+        <!--antras vardas-->
+        <div class="second-name">
+            <label for="second-name">Antras vardas</label>
+            <input type="text">
+        </div>
+        <!--pavarde-->
+        <div class="lastname">
+            <label for="lastname">Pavardė</label>
+            <input type="text">
+
+        </div>
+        <!--gimimo data-->
+        <div class="birthday">
+            <label for="age">Gimimo data</label>
+            <input type="date">
+        </div>
+        <!--asmens kodas-->
+        <div class="code">
+            <label for="code">Asmens kodas</label>
+            <input type="text">
+        </div>
+        <!--issilavinimas-->
+
+        <div class="education">
+            <label for="education">Išsilavinimas</label>
+            <select id="education">
+                <option value=""disabled selected>Pasirinkti</option>
+                <option value="primary">Pagrindinis</option>
+                <option value="secondary">Vidurinis</option>
+                <option value="higher">Profesinis</option>
+                <option value="other">Aukštasis-kolegijinis</option>
+                <option value="other">Aukštasis-universitetinis</option>
+            </select>
+        </div>
+        <!--telefonas-->
+        <div class="phone">
+            <label for="phone">Telefono numeris</label>
+            <select id="countryCode" name="countryCode" ></select>
+            
+            <input type="text">
+        </div>
+        <!--elpastas-->
+        <div class="email">
+            <label for="email">El. paštas</label>
+            <input type="email">
+            <label for="@"> @ </label>
+            <input type="text">
+        </div>
+<!--gyvenamoji vieta-->
+        <div class="adress">
+            <label for="adress">Gyvenamoji vieta</label>
+            <input type="text">
+        </div>
+        <!--vedybine padetis-->
+        <div class="marital-status">
+            <label for="marital-status">Vedybinė padėtis</label>
+            <select id="marital-status">
+                <option value="" disabled selected>Pasirinkti</option>
+                <option value="singleM">Nevedęs</option>
+                <option value="singleF">Neištekėjusi</option>
+                <option value="marriedM">Vedęs </option>
+                <option value="marriedF">Ištekėjusi</option>
+                <option value="divorcedM">Išsiskyręs</option>
+                <option value="divorcedF">Išsiskyrusi</option>
+                <option value="widowedM">Netekęs sutuoktinės</option>
+                <option value="widowedF">Netekusi sutuoktinio</option>
+            </select>
+
+
+            <fieldset id="spouse" style="display: none;">
+                <label for="spouse">Informacija apie sutuoktinį</label>
+                <label for="spouse-name">Vardas</label>
+                <input type="text">
+                <label for="spouse-lastname">Pavardė</label>
+                <input type="text">
+            </fieldset>
+
+        <!--profesine padetis-->
+        <div class="career">
+            <label for="career">Profesinė padėtis</label>
+            <select id="career">
+                <option value="" disabled selected>Pasirinkti</option>
+                <option value="student">Studentas</option>
+                <option value="unemployed">Bedarbis</option>
+                <option value="employed">Dirbantis</option>
+                <option value="maternity">Motinystės atostogos</option>
+                <option value="paternity">Tėvystės atostogos</option>
+            </select>
+            <!--studentas-->
+            <fieldset id="student">
+            <label for="university">Studijų pakopa</label>
+            <select id="degree">
+                <option value="" disabled selected>Pasirinkti</option>
+                <option value="bachelor">Bakalauras</option>
+                <option value="master">Magistras</option>
+                <option value="doctor">Doktorantūra</option>
+            </select>
+            <label for="course">Kursas</label>
+            <input type="text">
+            <label for="place">Įstaiga</label>
+            <input type="text">
+            <label for="graduation">Baigimo metai</label>
+            <input type="text">
+            </fieldset>
+            <!--bedarbis-->
+            <fieldset id="unemployed">
+            <label for="unemployed">Nedarbo priežastis</label>
+            <input type="text">
+            </fieldset>
+            <!--dirbantis-->
+            <fieldset id="employed">
+            <label for="workplace">Darbo įstaiga</label>
+            <input type="text">
+            <label for="position">Pareigos</label>
+            <input type="text">
+            </fieldset>
+            <!--mot/tev atostogos-->
+            <fieldset id="parental">
+            <label for="ends">Atostogos baigiasi</label>
+            <input type="date">
+            </fieldset>
+        </div>
+        <!--darbo patirtis-->
+
+        <div class="experience">
+            <label for="experience">Darbo patirtis</label>
+            <input type="number">
+            <label for="experience">metai</label>
+        </div>
+        <!--darbo sritis-->
+        <div class="field">
+            <label for="field">Darbo sritis</label>
+            <select id=""field>
+                <option value="" disabled selected>Pasirinkti</option>
+                <option value="law">Teisė</option>
+                <option value="public">Viešasis sektorius</option>
+                <option value="healthcare">Sveikatos apsauga</option>
+                <option value="pharmacy">Farmacija</option>
+                <option value=manufacturing">Pramonė/Gamyba</option>
+                <option value="IT">IT</option>
+                <option value="sales">Prekyba</option>
+                <option value="defense">Krašto apsauga</option>
+                <option value="internal">Vidaus reikalų sistema</option>
+                <option value="service">Klientų aptarnavimas ir paslaugos</option>
+                <option valuue="culture">Kultūra ir pramogos</option>
+                <option value="education">Švietimas/studijos</option>
+            </select>
+        </div>
+        <div class="submit">
+            <input type="submit" value="Pateikti">
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
