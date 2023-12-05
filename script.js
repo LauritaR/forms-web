@@ -19,20 +19,8 @@ const email = document.getElementById("email");
 const address = document.getElementById("address");
 const experience= document.getElementById("experience");
 const field= document.getElementById("field");
-const age = calculateAge(dobInput.value);
+const last = document.getElementById("last");
 
-function calculateAge(dateOfBirth) {
-    const today = new Date();
-    const birthDate = new Date(dateOfBirth);
-    let age = today.getFullYear() - birthDate.getFullYear();
-    const monthDiff = today.getMonth() - birthDate.getMonth();
-    
-    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
-        age--;
-    }
-    
-    return age;
-}
 
 studentFieldset.style.display = "none";
 unemployedFieldset.style.display = "none";
@@ -71,6 +59,12 @@ careerStatusSelect.addEventListener("change", function () {
     }
 });
 
+const marriedMale= document.getElementById("marriedM");
+const marriedFemale= document.getElementById("marriedF");
+const widowedMale= document.getElementById("widowedM");
+const widowedFemale= document.getElementById("widowedF");
+const divorcedMale= document.getElementById("divorcedM");
+const divorcedFemale= document.getElementById("divorcedF");
 
 maritalStatusSelect.addEventListener("change", function () {
     if (
@@ -81,6 +75,7 @@ maritalStatusSelect.addEventListener("change", function () {
     } else {
         spouseFieldset.style.display = "none";
     }
+
 });
 
 genderSelect.addEventListener("change", function () {
@@ -177,7 +172,6 @@ function populateCountryCodes() {
         selectElement.appendChild(optionElement);
     });
 }
-
 populateCountryCodes();
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -187,7 +181,6 @@ document.addEventListener('DOMContentLoaded', function () {
     dobInput.addEventListener("input", updateAsmensKodas);
     genderSelect.addEventListener("change", updateAsmensKodas);
 });
-
 
 function updateAsmensKodas() {
     const dobInput = document.getElementById("dob");
@@ -206,13 +199,38 @@ function updateAsmensKodas() {
         gender =  genderSelect.value==="male" ? 5 : 6;
     } else {
         console.error("Invalid birth year");
-        return;
     }
     const asmensKodas = gender + year + month + day;
     const asmensKodasInput = document.getElementById("code");
     asmensKodasInput.value = asmensKodas;
 }
 dobInput.addEventListener("input", updateAsmensKodas);
+
+function validateMaritalStatus()
+{ switch (maritalStatusSelect.value) {
+        case "marriedM":
+        case "marriedF":
+            if (spouseName.value.trim() !== "" && spouseLastName.value.trim() !== "") {
+                onSuccess(spouseName);
+                onSuccess(spouseLastName);
+            } else {
+                onError(spouseName);
+                onError(spouseLastName);
+            }
+            break;
+        default:
+            spouseName.required = false;
+            spouseLastName.required = false;
+            if (spouseName.value.trim() === "" && spouseLastName.value.trim() === "") {
+                onSuccess(spouseName);
+                onSuccess(spouseLastName);
+            } else {
+                onError(spouseName);
+                onError(spouseLastName);
+            }
+            break;
+    }
+}
 
 
 function validateInput()
@@ -301,6 +319,7 @@ function validateInput()
     else
     {
         onSuccess(maritalStatusSelect);
+        validateMaritalStatus();    
     }
 
     if(careerStatusSelect.value==="")
@@ -354,3 +373,146 @@ function onError(input)
     parent.classList.remove("success");
     parent.classList.add("error");
 }
+
+function validateField(input) {
+    if (input.value.trim() === "") {
+        onError(input);
+    } else {
+        onSuccess(input);
+    }
+}
+function validateStudent() {
+    const degreeSelect = document.getElementById("degree");
+    const courseInput = document.getElementById("course");
+    const placeInput = document.getElementById("place");
+    const graduationInput = document.getElementById("graduation");
+
+    validateField(degreeSelect);
+    validateField(courseInput);
+    validateField(placeInput);
+    validateField(graduationInput);
+}
+function validateUnemployed() {
+    const unemployedReasonInput = document.getElementById("unemployed");
+
+    validateField(unemployedReasonInput);
+}
+function validateEmployed() {
+    const workplaceInput = document.getElementById("workplace");
+    const positionInput = document.getElementById("position");
+
+    validateField(workplaceInput);
+    validateField(positionInput);
+}
+function validateParental() {
+    const parentalEndsInput = document.getElementById("ends");
+
+    validateField(parentalEndsInput);
+}
+function careerValidation(){
+ switch (careerStatusSelect.value) {
+        case "student":
+            validateStudent();
+            break;
+        case "unemployed":
+            validateUnemployed();
+            break;
+        case "employed":
+            validateEmployed();
+            break;
+        case "maternity":
+        case "paternity":
+            validateParental();
+            break;
+        default:
+            break;
+        
+}
+}
+
+const educationSelect = document.getElementById("education");
+const lastFieldset = document.getElementById("last");
+const qualificationFieldset = document.getElementById("qualification");
+const laipsnisFieldset = document.getElementById("mokslo-laipsnis");
+    lastFieldset.style.display = "none";
+    qualificationFieldset.style.display = "none";
+    laipsnisFieldset.style.display = "none";
+
+
+const optionPrimary = educationSelect.querySelector('option[value="primary"]');
+const optionSecondary = educationSelect.querySelector('option[value="secondary"]');
+const optionHigher = educationSelect.querySelector('option[value="higher"]');
+const optionKoleg = educationSelect.querySelector('option[value="koleg"]');
+const optionUni = educationSelect.querySelector('option[value="uni"]');
+const laipsnisSelect = document.getElementById("laipsnis");
+const optionProfBach = laipsnisSelect.querySelector('option[value="prof-bach"]');
+educationSelect.addEventListener("change", function () {
+    const selectedOption = educationSelect.value;
+    if (selectedOption === "primary" || selectedOption === "secondary") {
+        lastFieldset.style.display = "block";
+        qualificationFieldset.style.display = "none";
+        laipsnisFieldset.style.display = "none";
+    } else if (selectedOption === "higher") {
+        lastFieldset.style.display = "block";
+        qualificationFieldset.style.display = "block";
+        laipsnisFieldset.style.display = "none";
+       
+    } else if (selectedOption === "koleg") {
+        lastFieldset.style.display = "block";
+        qualificationFieldset.style.display = "block";
+        laipsnisFieldset.style.display = "block";
+        const laipsnisSelect = document.getElementById("laipsnis");
+        laipsnisSelect.value = "prof-bach";
+
+    } else if (selectedOption === "uni") {
+        lastFieldset.style.display = "block";
+        qualificationFieldset.style.display = "block";
+        laipsnisFieldset.style.display = "block";
+    
+        optionProfBach.style.display = "none"; 
+        laipsnisSelect.value="bachelor";
+    }
+    if (age < 18) {
+        optionPrimary.style.display = "block";
+        optionSecondary.style.display = "block";
+        optionHigher.style.display = "block";
+        optionKoleg.style.display = "none";
+        optionUni.style.display = "none";
+    }
+}       
+);
+ 
+    field.style.display = "none"
+    experience.addEventListener("change", function () {
+        const selectedOption = experience.value;
+      
+        if (selectedOption >0) {
+            field.style.display = "block";
+        } else if (selectedOption ===0) {
+            field.style.display = "none";
+        }
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const trackedFields = document.querySelectorAll(".main input, .main select");
+        const totalFields = trackedFields.length;
+        const progressCounter = document.querySelector(".progress-counter");
+       
+        trackedFields.forEach((field) => {
+            field.addEventListener("change", updateProgress);
+        });
+        
+        function updateProgress() {
+            let completedFields = 0;
+            trackedFields.forEach((field) => {
+                if (field.value.trim() !== "") {
+                    completedFields++;
+                }
+            });
+            progressCounter.textContent = `${completedFields}/${totalFields} užpildyta `;
+        }
+
+        updateProgress();
+
+    });
+    

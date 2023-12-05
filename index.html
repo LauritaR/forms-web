@@ -7,6 +7,11 @@
     <title>Forms</title>
 </head>
 <body>
+    <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+        <div class="progress-counter"></div>
+    </div>
+  
     <div class="main">
         <h1>Naudotojo anketa</h1>
         <!---lytis-->
@@ -52,7 +57,7 @@
             <label for="code">Asmens kodas</label>
                 <div class="input">
             <input type="text" id="code" readonly> 
-            <input type="text" id="lastDigits" maxlength="4" placeholder="Paskutiniai skaičiai">
+            <input type="text" id="lastDigits" maxlength="4" placeholder="4 skaičiai">
             <small class="error">Įveskite duomenis</small>
         </div>
               
@@ -67,11 +72,31 @@
                 <option value="primary">Pagrindinis</option>
                 <option value="secondary">Vidurinis</option>
                 <option value="higher">Profesinis</option>
-                <option value="other">Aukštasis-kolegijinis</option>
-                <option value="other">Aukštasis-universitetinis</option>
+                <option value="koleg">Aukštasis-kolegijinis</option>
+                <option value="uni">Aukštasis-universitetinis</option>
             </select>
               <small class="error">Įveskite duomenis</small>
+            <fieldset id="last">
+                <label for="last">Paskutinė baigta įstaiga</label>
+                <input type="text" id="last">
+                <small class="error">Įveskite duomenis</small>
+            </fieldset>
+            <fieldset id="qualification">
+                <label for="qualification">Kvalifikacija</label>
+                <input type="text" id="qualification">
+                <small class="error">Įveskite duomenis</small>
+            </fieldset>
+            <fieldset id="mokslo-laipsnis">
+                <label for="mokslo-laipsnis">Mokslo laipsnis</label>
+                <select name="laipsnis" id="laipsnis">
+                    <option value="" disabled selected>Pasirinkti</option>
+                    <option value="prof-bach">Profesinis bakalauras</option>
+                    <option value="bachelor">Bakalauras</option>
+                    <option value="master">Magistras</option>
+                    <option value="doctor">Daktaras</option>
+                </select>
 
+            </fieldset>
         </div>
         <!--telefonas-->
         <div class="phone">
@@ -116,10 +141,12 @@
                 <label for="spouse">Informacija apie sutuoktinį</label>
                 <fieldset>
                    <label for="spouse-name">Vardas</label>
-                    <input type="text" >  
+                    <input type="text" id="spouse-name" >
+                    <small class="error">Įveskite duomenis</small>  
                 </fieldset>
                 <label for="spouse-lastname">Pavardė</label>
-                <input type="text">
+                <input type="text" id="spouse-lastname">
+                <small class="error">Įveskite duomenis</small>
             </fieldset>
         </div>
         <!--profesine padetis-->
@@ -144,29 +171,38 @@
                 <option value="master">Magistras</option>
                 <option value="doctor">Doktorantūra</option>
             </select>
+            <small class="error">Įveskite duomenis</small>
             <label for="course">Kursas</label>
-            <input type="text">
+            <input type="text" id="course">
+            <small class="error">Įveskite duomenis</small>
             <label for="place">Įstaiga</label>
-            <input type="text">
+            <input type="text"id="place">
+            <small class="error">Įveskite duomenis</small>
             <label for="graduation">Baigimo metai</label>
-            <input type="date">
+            <input type="date" id="graduation">
+            <small class="error">Įveskite duomenis</small>
             </fieldset>
             <!--bedarbis-->
             <fieldset id="unemployed">
             <label for="unemployed">Nedarbo priežastis</label>
             <input type="text">
+            <small class="error">Įveskite duomenis</small>
             </fieldset>
             <!--dirbantis-->
             <fieldset id="employed">
             <label for="workplace">Darbo įstaiga</label>
             <input type="text">
+            <small class="error">Įveskite duomenis</small>
             <label for="position">Pareigos</label>
             <input type="text">
+            <small class="error">Įveskite duomenis</small>
+
             </fieldset>
             <!--mot/tev atostogos-->
             <fieldset id="parental">
             <label for="ends">Atostogos baigiasi</label>
             <input type="date">
+            <small class="error">Įveskite duomenis</small>
             </fieldset>
         </div>
         <!--darbo patirtis-->
@@ -178,6 +214,7 @@
         </div>
         <!--darbo sritis-->
         <div class="field">
+            <fieldset id="field">
             <label for="field">Darbo sritis</label>
             <select id="field">
                 <option value="" disabled selected>Pasirinkti</option>
@@ -195,7 +232,7 @@
                 <option value="education">Švietimas/studijos</option>
             </select>
               <small class="error">Įveskite duomenis</small>
-
+            </fieldset>
         </div>
         <div class="submit">
             <button class="error">Pateikti</button>
