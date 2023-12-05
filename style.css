@@ -20,18 +20,19 @@ body{
     height: min(90%, 1000px);
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    margin:30px;
+    min-width: 300px;
 }
 .main h1{
     text-align: center;
     margin-bottom: 40px;
-    font-size: clamp(1.5rem, 5vw, 2rem);
+    font-size: clamp(2rem, 5vw, 3rem);
     color: #444;
 }
 
 .main div{
     display: block;
-    margin-bottom: 10px;
-    font-size: 1.2rem;
+    font-size: clamp(1.5rem, 2vw, 2rem);
     color: #444;
 }   
 
@@ -41,9 +42,32 @@ body{
     border: 1px solid #ccc;
     border-radius: 5px;
     outline: none;
-    font-size: 1.2rem;
+    font-size: clamp(1.5rem, 2vw, 2rem);
     display: inline-block;
     color: #444;
+}
+.main label{
+    display: block;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    font-size:clamp(1.5rem,2vw, 2rem);
+    color: #444;
+}
+
+select option{
+    width: fit-content;
+    font-size: clamp(1.5rem, 1.5vw, 2rem);
+    color: #444;
+}
+.main .phone select{
+    font-size:  clamp(1.5rem, 1.5vw, 2rem);
+    color: #444;
+}
+.main .phone .input {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    margin-bottom: 10px;
+    font-size:  clamp(1.5rem, 1.5vw, 2rem);
 }
 
 .main div select{
@@ -52,6 +76,57 @@ body{
     border: 1px solid #ccc;
     border-radius: 5px;
     outline: none;
-    font-size: 1.2rem;
+    font-size:  clamp(1.5rem, 1.5vw, 2rem);
     color: #444;
+}
+.main .success input{
+    border: 2px solid green;
+
+
+}
+.main .error input{
+    border: 2px solid rgb(146, 1, 1);
+}
+.main fieldset{
+    border: none;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    background-color: aliceblue;
+    border-radius: 15px;
+}
+
+.main .code .input{
+    display: grid;
+    grid-template-columns: 2fr  1fr;
+}
+.main .code #lastdigits{
+    margin-left:20px;
+}
+.main button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    text-align: center;
+    border-radius: 5px;
+    outline: none;
+    font-size:  clamp(1.5rem, 1.5vw, 2rem);
+    color: #605d5d;
+    background: #a2a2a0;
+    cursor: pointer;
+    transition: 0.5s;
+    margin-top: 20px;
+}
+
+.main button:hover{
+    color: white;
+    background: rgb(96, 92, 92);
+    transition: 0.5s;
+}
+
+
+
+.main small{
+    font-size: clamp(1rem, 1vw, 1.5rem);
+    margin:3px;
+    visibility: hidden;
 }
