@@ -59,16 +59,13 @@ select option{
     font-size: clamp(1.5rem, 1.5vw, 2rem);
     color: #444;
 }
-.main .phone select{
-    font-size:  clamp(1.5rem, 1.5vw, 2rem);
-    color: #444;
-}
-.main .phone .input {
-    display: grid;
+
+.main .phone .input  {
+   display: grid;
     grid-template-columns: 1fr 2fr;
-    margin-bottom: 10px;
     font-size:  clamp(1.5rem, 1.5vw, 2rem);
 }
+
 
 .main div select{
     width: 100%;
@@ -79,14 +76,22 @@ select option{
     font-size:  clamp(1.5rem, 1.5vw, 2rem);
     color: #444;
 }
+
+.main .success select,
 .main .success input{
     border: 2px solid green;
-
-
 }
+
+.main .error select,
 .main .error input{
     border: 2px solid rgb(146, 1, 1);
 }
+
+.main .error small{
+    color: rgb(146, 1, 1);
+    visibility: visible;
+}
+
 .main fieldset{
     border: none;
     margin-bottom: 20px;

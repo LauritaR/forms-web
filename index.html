@@ -50,14 +50,12 @@
         <!--asmens kodas-->
         <div class="code">
             <label for="code">Asmens kodas</label>
-            <div class="input">
+                <div class="input">
             <input type="text" id="code" readonly> 
             <input type="text" id="lastDigits" maxlength="4" placeholder="Paskutiniai skaičiai">
-            </div>
-
-     
-              <small class="error">Įveskite duomenis</small>
-
+            <small class="error">Įveskite duomenis</small>
+        </div>
+              
         </div>
         
         <!--issilavinimas-->
@@ -79,10 +77,11 @@
         <div class="phone">
             <label for="phone">Telefono numeris</label>
             <div class="input">
-            <select id="countryCode" name="countryCode"required></select>
-            <input type="text" id="phone" required maxlength="13">
+                <select id="countryCode" name="countryCode"required></select>
+                <input type="text" id="phone"  maxlength="13"> 
+                 <small class="error">Įveskite duomenis</small>
             </div>
-              <small class="error">Įveskite duomenis</small>
+            
 
         </div>
         <!--elpastas-->
@@ -113,14 +112,12 @@
             </select>
               <small class="error">Įveskite duomenis</small>
 
-
             <fieldset id="spouse" style="display: none;">
                 <label for="spouse">Informacija apie sutuoktinį</label>
                 <fieldset>
                    <label for="spouse-name">Vardas</label>
                     <input type="text" >  
                 </fieldset>
-               
                 <label for="spouse-lastname">Pavardė</label>
                 <input type="text">
             </fieldset>
@@ -175,15 +172,14 @@
         <!--darbo patirtis-->
         <div class="experience">
             <label for="experience">Darbo patirtis</label>
-            <input type="number" min="0">
-            <label for="experience">metai</label>
+            <input type="number" id="experience" min="0">  
+            <label for="experience">metai</label> 
             <small class="error">Įveskite duomenis</small>
-
         </div>
         <!--darbo sritis-->
         <div class="field">
             <label for="field">Darbo sritis</label>
-            <select id=""field>
+            <select id="field">
                 <option value="" disabled selected>Pasirinkti</option>
                 <option value="law">Teisė</option>
                 <option value="public">Viešasis sektorius</option>

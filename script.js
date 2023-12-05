@@ -6,16 +6,33 @@ const parentalFieldset = document.getElementById("parental");
 const genderSelect = document.getElementById("lytis");
 const maritalStatusSelect = document.getElementById("marital-status");
 const spouseFieldset = document.getElementById("spouse");
+const spouseName= document.getElementById("spouse-name");
+const spouseLastName= document.getElementById("spouse-lastname");
 const firstname = document.getElementById("name");
 const lastName = document.getElementById("lastname");
 const dobInput = document.getElementById("dob");
-const code = document.getElementById("code");
+const lastdigits = document.getElementById("lastDigits");
 const education = document.getElementById("education");
-const phone = document.getElementById("phone");
+const phoneN = document.getElementById("phone");
+const country = document.getElementById("countryCode");
 const email = document.getElementById("email");
 const address = document.getElementById("address");
 const experience= document.getElementById("experience");
 const field= document.getElementById("field");
+const age = calculateAge(dobInput.value);
+
+function calculateAge(dateOfBirth) {
+    const today = new Date();
+    const birthDate = new Date(dateOfBirth);
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDiff = today.getMonth() - birthDate.getMonth();
+    
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+    
+    return age;
+}
 
 studentFieldset.style.display = "none";
 unemployedFieldset.style.display = "none";
@@ -200,18 +217,118 @@ dobInput.addEventListener("input", updateAsmensKodas);
 
 function validateInput()
 {
+    if(genderSelect.value==="")
+    {
+      onError(genderSelect);
+    }
+    else{
+        onSuccess(genderSelect);
+    }
     if(firstname.value.trim()==="")
     {
-        let parent=firstname.parentElement;
-        let messageEl=parent.querySelector("small");
-        messageEl.style.visibility="visible";
+        onError(firstname);
     }
     else
     {
-        let parent=firstname.parentElement;
-        let messageEl=parent.querySelector("small");
-        messageEl.style.visibility="hidden";
+        onSuccess(firstname);
+    }
+    if(lastName.value.trim()==="")
+    {
+        onError(lastName);
+    }
+    else
+    {
+        onSuccess(lastName);
+    }
+    if(dobInput.value.trim()==="")
+    {
+       onError(dobInput);
+    }
+    else
+    {
+        onSuccess(dobInput);
 
+    }
+    if(lastdigits.value.trim()==="")
+    {
+        onError(lastdigits);
+    }
+    else
+    {
+        onSuccess(lastdigits);
+    }
+    if(education.value.trim()==="")
+    {
+        onError(education);
+    }
+    else
+    {
+        onSuccess(education);
+    }
+
+   if(phoneN.value.trim()==="")
+    {
+        onError(phoneN);
+    }
+    else
+    {
+        onSuccess(phoneN);  
+    }
+
+    if(email.value.trim()==="")
+    {
+        onError(email);
+    }
+    else
+    {
+        onSuccess(email);
+    }
+
+    if(address.value.trim()==="")
+    {
+        onError(address);
+    }
+    else
+    {
+        onSuccess(address);
+    }
+
+
+    if(maritalStatusSelect.value==="")
+    {
+        onError(maritalStatusSelect); 
+    }
+    else
+    {
+        onSuccess(maritalStatusSelect);
+    }
+
+    if(careerStatusSelect.value==="")
+    {
+        onError(careerStatusSelect);
+    }
+    else
+    {
+        onSuccess(careerStatusSelect);
+        
+    }
+
+    if (experience.value.trim()==="")
+    {
+        onError(experience);
+    }
+    else
+    {
+        onSuccess(experience);
+    }
+
+    if (field.value.trim()==="")
+    {
+        onError(field);
+    }
+    else
+    {
+        onSuccess(field);
     }
 }
 
@@ -219,3 +336,21 @@ document.querySelector("button").addEventListener("click", (event)=> {
     event.preventDefault();
     validateInput();
 });
+
+function onSuccess(input)
+{
+    let parent=input.parentElement;
+    let messageEl=parent.querySelector("small");
+    messageEl.style.visibility="hidden";
+    parent.classList.remove("error");
+    parent.classList.add("success");
+}
+
+function onError(input)
+{
+    let parent=input.parentElement;
+    let messageEl=parent.querySelector("small");
+    messageEl.style.visibility="visible";
+    parent.classList.remove("success");
+    parent.classList.add("error");
+}
